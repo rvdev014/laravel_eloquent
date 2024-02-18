@@ -1,0 +1,54 @@
+<?php
+
+namespace App\Http\Controllers\Api;
+
+use App\Models\Comment;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Spatie\QueryBuilder\QueryBuilder;
+use Illuminate\Database\Eloquent\Collection;
+
+class CommentController extends Controller
+{
+  /**
+   * Display a listing of the resource.
+   */
+  public function index(): Collection|array
+  {
+    return QueryBuilder::for(Comment::class)
+      ->allowedFilters(['content'])
+      ->get();
+  }
+  
+  /**
+   * Store a newly created resource in storage.
+   */
+  public function store(Request $request)
+  {
+    //
+  }
+  
+  /**
+   * Display the specified resource.
+   */
+  public function show(Comment $comment): Comment
+  {
+    return $comment;
+  }
+  
+  /**
+   * Update the specified resource in storage.
+   */
+  public function update(Request $request, Comment $comment)
+  {
+    //
+  }
+  
+  /**
+   * Remove the specified resource from storage.
+   */
+  public function destroy(Comment $comment)
+  {
+    //
+  }
+}
